@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Dark Site</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+</head>
+<body>
+
+    <div class="menu-btn-container" onclick="toggleSidebar()">
+        <div class="menu-btn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div class="logo-container">
+            <a href="#" onclick="location.reload()"> <img src="/image/logo.png" alt="Логотип сайту" class="site-logo">
+            </a>
+        </div>
+    </div>
+
+    <!-- <div class="logo-container">
+        <a href="#" onclick="location.reload()"> <img src="/image/logo.png" alt="Логотип сайту" class="site-logo">
+        </a>
+    </div> -->
+
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <!-- <h3 class="menu-title">Меню</h3> -->
+             <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">
+                <i class="fas fa-times"></i>
+            </a>
+        </div>
+       
+        <ul class="menu-list">
+            <li><a href="#" onclick="openTab('menu-tab')"><i class="fas fa-home menu-icon"></i> Гуртожиток:)</a></li>
+            <li><a href="#" onclick="openTab('gallery-tab')"><i class="fas fa-images menu-icon"></i> Фотоколаж:)</a></li>
+            <li><a href="#" onclick="openTab('feedback-tab')"><i class="fas fa-comment-dots menu-icon"></i> Відгуки:)</a></li>
+            <li><a href="#" onclick="openTab('social-tab')"><i class="fas fa-share-alt menu-icon"></i> Соц мережі:)</a></li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        
+        <div id="menu-tab" class="tab-content active">
+            <h2 class="section-title">Наш гуртожиток:)</h2>
+            
+            <div class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="/image/d_front.jpg" alt="Фото 1"></div>
+                    <div class="swiper-slide"><img src="/image/d_room_t1.jpg" alt="Фото 2"></div>
+                    <div class="swiper-slide"><img src="/image/d_room_t2.jpg" alt="Фото 3"></div>
+                    <div class="swiper-slide"><img src="/image/d_room_t3.jpg" alt="Фото 4"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <div id="gallery-tab" class="tab-content">
+            <h2 class="section-title">Фотоколаж:)</h2>
+
+            <div class="masonry-collage">
+                <div class="collage-item"><img src="/image/ph1.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph2.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph3.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph4.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph5.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph6.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph7.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph8.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph9.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph10.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph11.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph12.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph13.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph14.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph15.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph16.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph17.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph18.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph19.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph20.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph21.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph22.jpg" alt="Фото" loading="lazy"></div>
+                <div class="collage-item"><img src="/image/ph23.jpg" alt="Фото" loading="lazy"></div>
+            </div>
+        </div>
+
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="close-lightbox">&times;</span>
+            <img class="lightbox-content" id="lightbox-img">
+        </div>
+
+        <div id="feedback-tab" class="tab-content">
+             <h2 class="section-title">Зворотній зв'язок</h2>
+            <div class="card feedback-card">
+                <div class="card-icon"><i class="fas fa-paper-plane"></i></div>
+                <h3>Маєте пропозицію?</h3>
+                <p>Ми завжди відкриті до ваших ідей та відгуків. Напишіть нам!</p>
+                <a href="mailto:lpchtrs7@gmail.com" class="email-link">
+                    lpchtrs7@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <div id="social-tab" class="tab-content social-tab-container">
+    
+            <div class="meme-background">
+                <span class="meme-item pos-1">😂</span>
+                <span class="meme-item pos-2">🚀</span>
+                <span class="meme-item pos-3">🔥</span>
+                <span class="meme-item pos-4">👀</span>
+                <span class="meme-item pos-5">🗿</span>
+                <span class="meme-item pos-6">💎</span>
+                <span class="meme-item pos-7">👾</span>
+                <span class="meme-item pos-8">🍕</span>
+            </div>
+
+            <div class="content-wrapper">
+                <h2 class="section-title">Приєднуйтесь</h2>
+                <div class="social-links">
+                    <a href="#" class="social-btn telegram" target="_blank">
+                        <span class="social-icon"><i class="fab fa-telegram-plane"></i></span>
+                        <span class="social-text">Telegram Channel</span>
+                    </a>
+                    <a href="#" class="social-btn tiktok" target="_blank">
+                        <span class="social-icon"><i class="fab fa-tiktok"></i></span>
+                        <span class="social-text">TikTok profile</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
