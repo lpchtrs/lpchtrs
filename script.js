@@ -194,31 +194,20 @@ function createSnowflake() {
 
 setInterval(createSnowflake, 100);
 
-/* === ЛОГІКА РОЗУМНОЇ ШАПКИ (Scroll Logic) === */
+/* === ЛОГІКА HEADER (Зникнення при скролі) === */
 
 let lastScrollTop = 0;
 const header = document.getElementById("smart-header");
-const scrollThreshold = 100; // Скільки треба проскролити, щоб ефект почався
 
 window.addEventListener("scroll", function() {
     let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    // 1. Логіка зникнення/появи
-    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-        // Скролимо ВНИЗ -> Ховаємо шапку
-        header.classList.add("header-hidden");
-        header.classList.remove("header-visible-bg"); // Прибираємо фон
+    // Якщо скролимо ВНИЗ і прокрутили вже трохи сторінки (>50px)
+    if (scrollTop > lastScrollTop && scrollTop > 50) {
+        header.classList.add("header-hidden"); // Додаємо клас, що ховає
     } else {
-        // Скролимо ВГОРУ -> Показуємо шапку
-        header.classList.remove("header-hidden");
-        
-        // Якщо ми не на самому верху сторінки, додаємо темний фон для читабельності
-        if (scrollTop > 50) {
-            header.classList.add("header-visible-bg");
-        } else {
-            header.classList.remove("header-visible-bg");
-        }
+        header.classList.remove("header-hidden"); // Показуємо назад
     }
     
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Захист від від'ємних значень
+    lastScrollTop = scrollTop;
 });

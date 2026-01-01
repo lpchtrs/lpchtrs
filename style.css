@@ -22,58 +22,86 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
 }
-/* === РОЗУМНА ШАПКА === */
-.smart-header {
+/* ========================================= */
+/* === СТИЛІ ДЛЯ ТВОГО HEADER === */
+/* ========================================= */
+
+#smart-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 90px; /* Висота шапки */
-    padding: 0 25px; /* Відступи збоку */
+    height: 80px; /* Висота шапки */
+    padding: 0 25px; /* Відступи від країв екрану */
+    
+    /* Головна магія вирівнювання: */
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Розносить меню і лого по краях */
-    z-index: 4000; /* Вище снігу, але нижче відкритих вікон */
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
+    justify-content: space-between; /* Розносить елементи по різних краях */
+    
+    z-index: 4000; /* Поверх усього */
     box-sizing: border-box;
     
-    /* Градієнт, щоб текст читався, коли шапка прозора */
-    background: linear-gradient(to bottom, rgba(15,15,18, 0.8), transparent);
+    /* Анімація і фон */
+    transition: transform 0.3s ease, background 0.3s;
+    background: rgba(15, 15, 18, 0.7); /* Напівпрозорий темний */
+    backdrop-filter: blur(10px); /* Ефект матового скла */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Клас, який ховає шапку (додається через JS) */
-.smart-header.header-hidden {
-    transform: translateY(-100%); /* Ховаємо вгору за межі екрану */
+/* Клас для приховування (додає JS) */
+#smart-header.header-hidden {
+    transform: translateY(-100%); /* Ховає шапку вгору */
 }
 
-/* Коли шапка з'являється на білому фоні (скрол вгору), додаємо їй фон */
-.smart-header.header-visible-bg {
-    background: rgba(15, 15, 18, 0.9); /* Темний фон */
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+/* Стиль для блоків всередині (щоб вони не "злипались") */
+.header-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Стиль кнопки всередині хедера */
+/* === Кнопка Меню === */
 .menu-btn {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
+    border-radius: 50%; /* Кругла кнопка */
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 22px;
     color: #fff;
     cursor: pointer;
-    backdrop-filter: blur(5px);
+    transition: 0.3s;
 }
 
-/* Стиль логотипу */
+.menu-btn:hover {
+    background: #00d2ff; /* Акцентний колір при наведенні */
+    color: #000;
+}
+
+/* === Логотип === */
 .site-logo {
-    height: 45px;
-    width: auto;
+    height: 45px; /* Висота лого */
+    width: auto;  /* Ширина підлаштується сама */
     display: block;
+}
+
+/* Адаптація під телефон */
+@media screen and (max-width: 768px) {
+    #smart-header {
+        height: 70px;
+        padding: 0 15px;
+    }
+    .menu-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+    .site-logo {
+        height: 35px; /* Трохи менше лого на телефоні */
+    }
 }
 
 /* На мобільному можна зробити шапку трохи компактнішою */
