@@ -22,45 +22,76 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
 }
-
-/* === ЛОГОТИП САЙТУ === */
-
-.logo-container {
+/* === РОЗУМНА ШАПКА === */
+#smart-header {
     position: fixed;
-    /* Розміщуємо праворуч від кнопки меню */
-    top: 25px;    /* Приблизно по центру висоти кнопки меню */
-    left: 90px;   /* Відступ зліва (25px відступ кнопки + 55px ширина кнопки + 15px зазор) */
-    z-index: 2400; /* Має бути вище контенту і снігу, але НИЖЧЕ відкритого меню (там 2500) */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px; /* Висота шапки */
+    padding: 0 25px; /* Відступи збоку */
     display: flex;
     align-items: center;
+    justify-content: flex-start; /* Розносить меню і лого по краях */
+    z-index: 4000; /* Вище снігу, але нижче відкритих вікон */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.3s;
+    box-sizing: border-box;
+    
+    /* Градієнт, щоб текст читався, коли шапка прозора */
+    background: linear-gradient(to bottom, rgba(15,15,18, 0.8), transparent);
 }
 
+/* Клас, який ховає шапку (додається через JS) */
+#smart-header.header-hidden {
+    transform: translateY(-100%); /* Ховаємо вгору за межі екрану */
+}
+
+/* Коли шапка з'являється на білому фоні (скрол вгору), додаємо їй фон */
+#smart-header.header-visible-bg {
+    background: rgba(15, 15, 18, 0.9); /* Темний фон */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+/* Стиль кнопки всередині хедера */
+.menu-btn {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+}
+
+/* Стиль логотипу */
 .site-logo {
-    /* Встановлюємо фіксовану висоту, ширина підлаштується автоматично */
-    height: 60px; 
+    height: 45px;
     width: auto;
     display: block;
-    transition: transform 0.3s ease;
 }
 
-/* Легкий ефект при наведенні на лого */
-.site-logo:hover {
-    transform: scale(1.05);
-}
-
-/* === АДАПТАЦІЯ ЛОГО ПІД ТЕЛЕФОН === */
-/* Додайте цей блок всередину існуючого @media screen and (max-width: 768px) { ... } в кінці файлу, або просто вставте в кінець CSS */
-
+/* На мобільному можна зробити шапку трохи компактнішою */
 @media screen and (max-width: 768px) {
-    .logo-container {
-         /* На телефонах трохи посунемо і зменшимо */
-        left: 90px;
-        top: 15px;
+    #smart-header {
+        height: 70px;
+        padding: 0 15px;
+    }
+    .menu-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
     }
     .site-logo {
-        height: 80px; /* Трохи менший розмір для мобільних */
+        height: 35px;
     }
 }
+
 
 h2.section-title {
     font-size: 2rem;

@@ -10,15 +10,21 @@
 </head>
 <body>
 
-    <div class="menu-btn-container" onclick="toggleSidebar()">
-        <div class="menu-btn">
-            <i class="fas fa-bars"></i>
+    <header id="smart-header">
+    
+        <div class="header-item" onclick="toggleSidebar()">
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
-        <div class="logo-container">
-            <a href="#" onclick="location.reload()"> <img src="image/logo.png" alt="Логотип сайту" class="site-logo">
+
+        <div class="header-item logo-wrapper">
+            <a href="#" onclick="location.reload()">
+                <img src="image/logo.png" alt="Logo" class="site-logo">
             </a>
         </div>
-    </div>
+
+    </header>
 
     <!-- <div class="logo-container">
         <a href="#" onclick="location.reload()"> <img src="/image/logo.png" alt="Логотип сайту" class="site-logo">
@@ -28,9 +34,9 @@
     <div id="sidebar" class="sidebar">
         <div class="sidebar-header">
             <!-- <h3 class="menu-title">Меню</h3> -->
-             <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">
+             <!-- <a href="javascript:void(0)" class="close-btn" onclick="toggleSidebar()">
                 <i class="fas fa-times"></i>
-            </a>
+            </a> -->
         </div>
        
         <ul class="menu-list">
