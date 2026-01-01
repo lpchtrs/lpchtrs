@@ -23,7 +23,7 @@ body {
     line-height: 1.6;
 }
 /* === РОЗУМНА ШАПКА === */
-#smart-header {
+.smart-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -42,12 +42,12 @@ body {
 }
 
 /* Клас, який ховає шапку (додається через JS) */
-#smart-header.header-hidden {
+.smart-header.header-hidden {
     transform: translateY(-100%); /* Ховаємо вгору за межі екрану */
 }
 
 /* Коли шапка з'являється на білому фоні (скрол вгору), додаємо їй фон */
-#smart-header.header-visible-bg {
+.smart-header.header-visible-bg {
     background: rgba(15, 15, 18, 0.9); /* Темний фон */
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(255,255,255,0.05);
