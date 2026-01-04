@@ -211,3 +211,38 @@ window.addEventListener("scroll", function() {
     
     lastScrollTop = scrollTop;
 });
+
+/* === ФУНКЦІЯ ПАГІНАЦІЇ ГАЛЕРЕЇ === */
+function switchPage(pageNum) {
+    // 1. Знаходимо обидві сторінки і кнопки
+    const page1 = document.getElementById('gallery-page-1');
+    const page2 = document.getElementById('gallery-page-2');
+    const btn1 = document.getElementById('btn-page-1');
+    const btn2 = document.getElementById('btn-page-2');
+
+    // 2. Логіка перемикання
+    if (pageNum === 1) {
+        // Показати сторінку 1
+        page1.style.display = 'block';
+        page2.style.display = 'none';
+        
+        // Активувати кнопку 1
+        btn1.classList.add('active');
+        btn2.classList.remove('active');
+    } else {
+        // Показати сторінку 2
+        page1.style.display = 'none';
+        page2.style.display = 'block';
+        
+        // Активувати кнопку 2
+        btn1.classList.remove('active');
+        btn2.classList.add('active');
+    }
+
+    // 3. Плавна прокрутка до початку галереї (для зручності)
+    // Знаходимо заголовок вкладки і скролимо до нього
+    const galleryTitle = document.querySelector('#gallery-tab .section-title');
+    if(galleryTitle) {
+        galleryTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
