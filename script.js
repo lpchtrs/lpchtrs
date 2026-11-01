@@ -214,35 +214,28 @@ window.addEventListener("scroll", function() {
 
 /* === ФУНКЦІЯ ПАГІНАЦІЇ ГАЛЕРЕЇ === */
 function switchPage(pageNum) {
-    // 1. Знаходимо обидві сторінки і кнопки
-    const page1 = document.getElementById('gallery-page-1');
-    const page2 = document.getElementById('gallery-page-2');
-    const btn1 = document.getElementById('btn-page-1');
-    const btn2 = document.getElementById('btn-page-2');
+    // 1. Загальна кількість сторінок
+    const totalPages = 3;
 
-    // 2. Логіка перемикання
-    if (pageNum === 1) {
-        // Показати сторінку 1
-        page1.style.display = 'block';
-        page2.style.display = 'none';
-        
-        // Активувати кнопку 1
-        btn1.classList.add('active');
-        btn2.classList.remove('active');
-    } else {
-        // Показати сторінку 2
-        page1.style.display = 'none';
-        page2.style.display = 'block';
-        
-        // Активувати кнопку 2
-        btn1.classList.remove('active');
-        btn2.classList.add('active');
+    // 2. Проходимо циклом по всіх сторінках і кнопках
+    for (let i = 1; i <= totalPages; i++) {
+        const page = document.getElementById(`gallery-page-${i}`);
+        const btn = document.getElementById(`btn-page-${i}`);
+
+        if (page && btn) {
+            if (i === pageNum) {
+                page.style.display = 'block';
+                btn.classList.add('active');
+            } else {
+                page.style.display = 'none';
+                btn.classList.remove('active');
+            }
+        }
     }
 
-    // 3. Плавна прокрутка до початку галереї (для зручності)
-    // Знаходимо заголовок вкладки і скролимо до нього
+    // 3. Плавна прокрутка до початку галереї
     const galleryTitle = document.querySelector('#gallery-tab .section-title');
-    if(galleryTitle) {
+    if (galleryTitle) {
         galleryTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
